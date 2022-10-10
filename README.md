@@ -29,3 +29,26 @@ everything after the "-" gets BASE64 encoded in python and decoded in the HTML (
 
 
 Quickly developed in 5h but still quiet pritty ^^
+
+```
+import prittylog as prittylog
+
+log = prittylog.prittylog("ModuleNameHere", True)
+
+log.info("SimpleLogMessage- optional escapesafe")
+log.critical("SimpleLogMessage- optional escapesafe")
+log.warning("SimpleLogMessage- optional escapesafe")
+log.error("SimpleLogMessage- optional escapesafe")
+
+log.end()
+```
+prittylog.log![prittylogsample](https://user-images.githubusercontent.com/62520314/194912703-2b6ab738-b363-48c7-9071-56e792557abf.png)
+ content:
+```
+2022-10-10 18:22:46,668;2022-10-10 18:22:46.668474;ModuleNameHere;SimpleLogMessage-IG9wdGlvbmFsIGVzY2FwZXNhZmU=;INFO
+2022-10-10 18:22:46,668;2022-10-10 18:22:46.668983;ModuleNameHere;SimpleLogMessage-IG9wdGlvbmFsIGVzY2FwZXNhZmU=;CRITICAL
+2022-10-10 18:22:46,668;2022-10-10 18:22:46.668983;ModuleNameHere;SimpleLogMessage-IG9wdGlvbmFsIGVzY2FwZXNhZmU=;WARNING
+2022-10-10 18:22:46,669;2022-10-10 18:22:46.669567;ModuleNameHere;SimpleLogMessage-IG9wdGlvbmFsIGVzY2FwZXNhZmU=;ERROR
+```
+
+
