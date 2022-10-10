@@ -60,12 +60,11 @@ class prittylog():
 <header>
     <title>PrittyLog</title>
 </header>
-
 <body>
     <div class="headerbar">
         <div class="logo">
             <img class="imglogo" style="display:block; width:100%;" id="base64image"
-                src="data:image/png;base64,LOGO</div>
+                src="data:image/png;base64,LOGO"></div>
         <div class="logselector">
             <h1>PrittyLog</h1>
             <button class="button-36" role="button" onclick="updatebuttons('All')">All</button>
@@ -75,15 +74,12 @@ class prittylog():
             <button class="button-36" role="button" onclick="updatebuttons('CRITICAL')">Critical</button>
         </div>
         <div class="filter" id="filter">
-
         </div>
     </div>
     <div class="content">
         <div class="logs" id="logs">
-
         </div>
         <div class="logdetails" id="logdetails">
-
         </div>
     </div>
 </body>
@@ -93,9 +89,7 @@ class prittylog():
     let selectedcategroyin = "All";
     let filterresult = filter(selectedmodulesin, selectedcategroyin, login);
     document.getElementById('logs').innerHTML = loop(filterresult);
-
     document.getElementById('filter').innerHTML = buildselector(onlyUnique(login))
-
     function updateDetails(filterresult, id) {
         document.getElementById('logdetails').innerHTML = details(filterresult, id);
     }
@@ -104,13 +98,11 @@ class prittylog():
         filterresult = filter(selectedmodulesin, selectedcategroyin, login);
         document.getElementById('logs').innerHTML = loop(filterresult);
     }
-
     function updatebuttons(value) {
         selectedcategroyin = value;
         filterresult = filter(selectedmodulesin, selectedcategroyin, login);
         document.getElementById('logs').innerHTML = loop(filterresult);
     }
-
     function buildselector(modules) {
         let html = "<div><select class='classic' id='moduleselector' style='width: 100%' onchange='updatemodule(this.value)'><option selected=''> Please Select Module</option>";
         for (const i in modules) {
@@ -119,7 +111,6 @@ class prittylog():
         html += "</select></div>";
         return html;
     }
-
     function onlyUnique(log) {
         let modules = ['All'];
         for (const i in log) {
@@ -130,7 +121,6 @@ class prittylog():
     function oUfilter(value, index, self) {
         return self.indexOf(value) === index;
     }
-
     function filter(selectedmodules, selectedcategroy, log) {
         let filtered = [];
         if (selectedmodules == "All" && selectedcategroy != "All") {
@@ -141,7 +131,6 @@ class prittylog():
                 }
             }
         } else if (selectedcategroy == "All" && selectedmodules != "All")
-
             for (const i in log) {
                 if (selectedmodules.includes(log[i][2])) {
                     filtered.push(log[i]);
@@ -150,7 +139,6 @@ class prittylog():
             }
         else if (selectedmodules == "All" && selectedcategroy == "All") {
             for (const i in log) {
-
                 filtered.push(log[i]);
                 console.log("C" + log[i]);
             }
@@ -164,8 +152,6 @@ class prittylog():
             }
         } return filtered;
     }
-
-
     function wrapper(date, module, message, category, position) {
         let delimiter = "-"
         if (message.includes(delimiter)) {
@@ -174,7 +160,6 @@ class prittylog():
         else {
             var mg = [message];
         }
-
         return `<div class="log${category}">
                     <div class="Subject">${category} - ${module} - ${date}</div>
                     <div class="message">${mg[0]}</div> <button class="todetails" onclick="updateDetails(filterresult,${position})"> Show Details</button>
@@ -191,7 +176,6 @@ class prittylog():
         let delimiter = "-"
         if (filterresult[position][3].includes(delimiter)) {
             var mg = filterresult[position][3].split("-");
-
             return `<div class="details">
                     <div class="Subject"><h1>${filterresult[position][4]} - ${filterresult[position][2]} - ${filterresult[position][1]}</h1></div>
                     <div class="message"><h2>${mg[0]}</h2></div >
@@ -203,14 +187,12 @@ class prittylog():
                     <div class="Subject"><h1>${filterresult[position][4]} - ${filterresult[position][2]} - ${filterresult[position][1]}</h1></div>
                     <div class="message"><h2>${mg[0]}</h2></div ></div>`;
         }
-
     }
 </script>
 <style>
     .todetails {
         float: right;
     }
-
     .logDEBUG {
         background-color: #00ff00af;
         border-color: black;
@@ -220,7 +202,6 @@ class prittylog():
         padding: 5px;
         margin: 2px;
     }
-
     .logINFO {
         background-color: #0000ffaf;
         padding: 5px;
@@ -230,7 +211,6 @@ class prittylog():
         border-radius: 15px;
         margin: 2px;
     }
-
     .logWARNING {
         background-color: #ffff00af;
         border-color: black;
@@ -240,7 +220,6 @@ class prittylog():
         padding: 5px;
         margin: 2px;
     }
-
     .logERROR {
         background-color: #ff0000af;
         border-color: black;
@@ -250,7 +229,6 @@ class prittylog():
         padding: 5px;
         margin: 2px;
     }
-
     .logCRITICAL {
         background-color: #ff00ffaf;
         border-color: black;
@@ -260,7 +238,6 @@ class prittylog():
         padding: 5px;
         margin: 2px;
     }
-
     .logs {
         width: 50%;
         float: left;
@@ -280,12 +257,9 @@ class prittylog():
         display: flex;
         height: calc(100vh - 150px);
     }
-
     .content {
         display: flex;
     }
-
-
     .logdetails {
         float: right;
         display: flex;
@@ -305,7 +279,6 @@ class prittylog():
         overflow: scroll;
         height: calc(100vh - 150px)
     }
-
     .headerbar {
         background: rgb(228, 245, 252);
         background: -moz-linear-gradient(45deg, rgba(228, 245, 252, 1) 0%, rgba(191, 232, 249, 1) 50%, rgba(159, 216, 239, 1) 51%, rgba(42, 176, 237, 1) 100%);
@@ -316,22 +289,16 @@ class prittylog():
         width: 100%;
         display: flex;
     }
-
     .logo {
-
         height: 150px;
         width: 150px;
         float: left;
     }
-
     .filter {
-
         height: 150px;
         width: 250px;
         float: right;
-
     }
-
     .imglogo {
         position: relative;
         margin: auto;
@@ -342,7 +309,6 @@ class prittylog():
         -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
     }
-
     .button-36 {
         background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
         border-radius: 8px;
@@ -363,20 +329,16 @@ class prittylog():
         -webkit-user-select: none;
         touch-action: manipulation;
     }
-
     .button-36:hover {
         box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
         transition-duration: .1s;
     }
-
     @media (min-width: 500px) {
         .button-36 {
             padding: 0 50px;
         }
     }
-
     select {
-
         /* styling */
         background-color: white;
         border: thin solid blue;
@@ -385,9 +347,7 @@ class prittylog():
         display: flex;
         line-height: 1.5em;
         padding: 0.5em 3.5em 0.5em 1em;
-
         /* reset */
-
         margin: 0;
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
@@ -395,7 +355,6 @@ class prittylog():
         -webkit-appearance: none;
         -moz-appearance: none;
     }
-
     select.classic {
         background-image:
             linear-gradient(45deg, transparent 50%, blue 50%),
@@ -411,10 +370,8 @@ class prittylog():
             2.5em 2.5em;
         background-repeat: no-repeat;
     }
-
     .logselector {
         text-align: center;
-
         flex: 1;
     }
 </style>"""
